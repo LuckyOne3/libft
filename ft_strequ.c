@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amyrta <amyrta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 16:35:57 by amyrta            #+#    #+#             */
-/*   Updated: 2019/09/15 17:51:31 by amyrta           ###   ########.fr       */
+/*   Created: 2019/09/07 19:56:01 by amyrta            #+#    #+#             */
+/*   Updated: 2019/09/16 20:14:34 by amyrta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strstr(const char *haystack, const char *needle)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	unsigned int pos;
-	unsigned int i;
+	size_t i;
 
-	if (!*needle)
-		return ((char*)haystack);
-	pos = 0;
-	while (haystack[pos])
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
 	{
-		if (haystack[pos] == needle[0])
-		{
-			i = 1;
-			while (needle[i] && haystack[pos + i] == needle[i])
-				++i;
-			if (needle[i] == '\0')
-				return ((char*)&haystack[pos]);
-		}
-		++pos;
+		i++;
 	}
-	return (NULL);
+	if (s1[i] == '\0' && s2[i] == '\0')
+		return (1);
+	return (0);
 }

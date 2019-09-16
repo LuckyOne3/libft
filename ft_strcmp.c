@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amyrta <amyrta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:35:57 by amyrta            #+#    #+#             */
-/*   Updated: 2019/09/15 17:51:31 by amyrta           ###   ########.fr       */
+/*   Updated: 2019/09/16 18:36:05 by amyrta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strstr(const char *haystack, const char *needle)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	unsigned int pos;
-	unsigned int i;
+	int	i;
 
-	if (!*needle)
-		return ((char*)haystack);
-	pos = 0;
-	while (haystack[pos])
-	{
-		if (haystack[pos] == needle[0])
-		{
-			i = 1;
-			while (needle[i] && haystack[pos + i] == needle[i])
-				++i;
-			if (needle[i] == '\0')
-				return ((char*)&haystack[pos]);
-		}
-		++pos;
-	}
-	return (NULL);
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

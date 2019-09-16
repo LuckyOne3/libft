@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amyrta <amyrta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:35:57 by amyrta            #+#    #+#             */
-/*   Updated: 2019/09/15 17:51:31 by amyrta           ###   ########.fr       */
+/*   Updated: 2019/09/16 18:52:45 by amyrta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strstr(const char *haystack, const char *needle)
+int		ft_isalpha(int c)
 {
-	unsigned int pos;
-	unsigned int i;
-
-	if (!*needle)
-		return ((char*)haystack);
-	pos = 0;
-	while (haystack[pos])
-	{
-		if (haystack[pos] == needle[0])
-		{
-			i = 1;
-			while (needle[i] && haystack[pos + i] == needle[i])
-				++i;
-			if (needle[i] == '\0')
-				return ((char*)&haystack[pos]);
-		}
-		++pos;
-	}
-	return (NULL);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }

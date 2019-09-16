@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amyrta <amyrta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 16:35:57 by amyrta            #+#    #+#             */
-/*   Updated: 2019/09/15 17:51:31 by amyrta           ###   ########.fr       */
+/*   Created: 2019/08/06 13:51:57 by amyrta            #+#    #+#             */
+/*   Updated: 2019/09/16 18:21:39 by amyrta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strstr(const char *haystack, const char *needle)
+int		ft_atoi(char const *str)
 {
-	unsigned int pos;
-	unsigned int i;
+	int n;
+	int i;
+	int isneg;
 
-	if (!*needle)
-		return ((char*)haystack);
-	pos = 0;
-	while (haystack[pos])
+	n = 0;
+	i = 0;
+	isneg = 0;
+	while ((str[i] == '\n') || (str[i] == '\t') || (str[i] == '\v')
+			|| (str[i] == ' ') || (str[i] == '\f') || (str[i] == '\r'))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (haystack[pos] == needle[0])
-		{
-			i = 1;
-			while (needle[i] && haystack[pos + i] == needle[i])
-				++i;
-			if (needle[i] == '\0')
-				return ((char*)&haystack[pos]);
-		}
-		++pos;
+		if (str[i] == '-')
+			isneg = 1;
+		i++;
 	}
-	return (NULL);
+	while ((str[i] >= '0') && (str[i] <= '9'))
+	{
+		n = 10 * n + (str[i] - '0');
+		i++;
+	}
+	if (isneg == 1)
+		return (-n);
+	return (n);
 }

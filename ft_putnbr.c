@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amyrta <amyrta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 16:35:57 by amyrta            #+#    #+#             */
-/*   Updated: 2019/09/15 17:51:31 by amyrta           ###   ########.fr       */
+/*   Created: 2019/08/06 13:23:21 by amyrta            #+#    #+#             */
+/*   Updated: 2019/09/16 18:12:43 by amyrta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strstr(const char *haystack, const char *needle)
+void		ft_putnbr(int n)
 {
-	unsigned int pos;
-	unsigned int i;
+	unsigned int	res;
 
-	if (!*needle)
-		return ((char*)haystack);
-	pos = 0;
-	while (haystack[pos])
+	if (n < 0)
 	{
-		if (haystack[pos] == needle[0])
-		{
-			i = 1;
-			while (needle[i] && haystack[pos + i] == needle[i])
-				++i;
-			if (needle[i] == '\0')
-				return ((char*)&haystack[pos]);
-		}
-		++pos;
+		n = n * (-1);
+		ft_putchar('-');
 	}
-	return (NULL);
+	res = n;
+	if (res < 10)
+		ft_putchar(res + 48);
+	if (res >= 10)
+	{
+		ft_putnbr(res / 10);
+		ft_putnbr(res % 10);
+	}
 }
