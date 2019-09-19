@@ -6,23 +6,21 @@
 /*   By: amyrta <amyrta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:35:57 by amyrta            #+#    #+#             */
-/*   Updated: 2019/09/11 18:14:40 by amyrta           ###   ########.fr       */
+/*   Updated: 2019/09/19 17:00:45 by amyrta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *s)
+size_t	ft_strlen(const char *str)
 {
-	size_t len;
+	size_t i;
 
-	if (!s)
-		return (0);
-	len = 0;
-	while (*s != '\0')
+	i = 0;
+	while (*str)
 	{
-		len++;
-		s++;
+		str++;
+		i++;
 	}
-	return (len);
+	return (i);
 }

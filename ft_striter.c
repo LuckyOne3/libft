@@ -6,14 +6,20 @@
 /*   By: amyrta <amyrta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 19:56:01 by amyrta            #+#    #+#             */
-/*   Updated: 2019/09/16 19:56:26 by amyrta           ###   ########.fr       */
+/*   Updated: 2019/09/19 17:01:36 by amyrta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_striter(char *s, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char *))
 {
-	while (s != NULL && *s)
-		f(s++);
+	if (s && f)
+	{
+		while (*s)
+		{
+			f(s);
+			s++;
+		}
+	}
 }

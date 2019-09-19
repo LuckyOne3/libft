@@ -6,13 +6,19 @@
 /*   By: amyrta <amyrta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:35:57 by amyrta            #+#    #+#             */
-/*   Updated: 2019/09/16 18:23:45 by amyrta           ###   ########.fr       */
+/*   Updated: 2019/09/19 17:02:08 by amyrta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_putchar_fd(char c, int fd)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	write(fd, &c, 1);
+	if (!s || fd < 0)
+		return ;
+	while (*s)
+	{
+		write(fd, s, 1);
+		s++;
+	}
 }

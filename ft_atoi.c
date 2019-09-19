@@ -6,36 +6,44 @@
 /*   By: amyrta <amyrta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 13:51:57 by amyrta            #+#    #+#             */
-/*   Updated: 2019/09/16 18:21:39 by amyrta           ###   ########.fr       */
+/*   Updated: 2019/09/19 17:03:03 by amyrta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(char const *str)
+static int	ft_kost(int mult)
 {
-	int n;
-	int i;
-	int isneg;
+	if (mult < 0)
+		return (0);
+	return (-1);
+}
 
-	n = 0;
-	i = 0;
-	isneg = 0;
-	while ((str[i] == '\n') || (str[i] == '\t') || (str[i] == '\v')
-			|| (str[i] == ' ') || (str[i] == '\f') || (str[i] == '\r'))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+int			ft_atoi(const char *str)
+{
+	long long mult;
+	long long nb;
+
+	mult = 1;
+	nb = 0;
+	while ((*str == ' ') || (*str == '\t') || (*str == '\v') || (*str == '\f')\
+			|| (*str == '\r') || (*str == '\n'))
+		str++;
+	if (*str == '-')
 	{
-		if (str[i] == '-')
-			isneg = 1;
-		i++;
+		str++;
+		mult = -1;
 	}
-	while ((str[i] >= '0') && (str[i] <= '9'))
+	else if (*str == '+')
+		str++;
+	while (*str != '\0')
 	{
-		n = 10 * n + (str[i] - '0');
-		i++;
+		if ((*str < '0') || (*str > '9'))
+			return (nb * mult);
+		if (nb > nb * 10 + (*str - '0') && nb != 214748364)
+			return (ft_kost(mult));
+		nb = nb * 10 + (*str - '0');
+		str++;
 	}
-	if (isneg == 1)
-		return (-n);
-	return (n);
+	return ((int)(nb * mult));
 }

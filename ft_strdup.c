@@ -6,7 +6,7 @@
 /*   By: amyrta <amyrta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:35:57 by amyrta            #+#    #+#             */
-/*   Updated: 2019/09/11 18:45:09 by amyrta           ###   ########.fr       */
+/*   Updated: 2019/09/19 16:54:47 by amyrta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*ft_strdup(const char *s1)
 	size_t	i;
 
 	len = ft_strlen(s1);
-	new = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(new = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{
